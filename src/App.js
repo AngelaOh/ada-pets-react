@@ -21,8 +21,8 @@ class App extends Component {
   }
 
   showPetDetails = (index) => {
-     console.log(index)
      let selectedPet = this.state.petList[index]
+     console.log("selected pet image", selectedPet.images)
      console.log('old selected pet', selectedPet)
 
     this.setState({
@@ -43,6 +43,8 @@ class App extends Component {
 
   addNewPet = (pet) => {
     const pets = this.state.petList
+    pet["id"] = this.state.petList[this.state.petList.length-1].id + 1
+
     pets.push(pet)
     this.setState({
       petList: pets

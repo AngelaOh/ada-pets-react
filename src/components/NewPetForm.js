@@ -11,7 +11,7 @@ class NewPetForm extends Component {
       name: '',
       species: '',
       location: '',
-      image: '',
+      images: '',
       about: ''
     };
   }
@@ -25,12 +25,13 @@ class NewPetForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log('image here:', this.state.images)
 
     this.props.addPetCallback({
       name: this.state.name,
       species: this.state.species,
       location: this.state.location,
-      image: this.state.image,
+      images: [this.state.images],
       about: this.state.about
     })
   }
@@ -39,8 +40,6 @@ class NewPetForm extends Component {
     return (
       <form  className="new-pet-form">
         <h3>Add a Pet</h3>
-        { /* A form should go here! */ }
-
         <form className="new-pet-form" onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="name">Name:</label>
@@ -66,12 +65,12 @@ class NewPetForm extends Component {
               value={this.state.location} />
             </div>
             <div>
-              <label htmlFor="image">Image:</label>
+              <label htmlFor="images">Image:</label>
               <input 
-              name="image"
-              required
+              name="images"
+              
               onChange={this.onChangeHandler}
-              value={this.state.image} />
+              value={this.state.images} />
             </div>
             <div>
               <label htmlFor="about">About:</label>
@@ -84,14 +83,10 @@ class NewPetForm extends Component {
               type="submit"
               value="Add Pet" />
           </form>
-
-
         <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" />
       </form>
     );
   }
-
-
 }
 
 NewPetForm.propTypes = {

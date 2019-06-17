@@ -11,9 +11,13 @@ const PetCard = (props) => {
   const { id, name, species, about, location } = props;
 
   const onPetDetailsClick = () => {
-    props.petDetailsClickCallback(id, name, species, about, location)
+    props.petDetailsClickCallback(id)
   }
-  
+
+  const removePetClick = () => {
+    props.removePetCallback(id)
+  }
+
   return (
     <div className="card pet-card">
 
@@ -30,6 +34,7 @@ const PetCard = (props) => {
           type="button" 
           className="btn btn-danger pet-card--close-btn" 
           aria-label="Close"
+          onClick={removePetClick}
         >
           Close
         </button>

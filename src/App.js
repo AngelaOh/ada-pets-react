@@ -20,8 +20,8 @@ class App extends Component {
     };
   }
 
-  showPetDetails = (id, name, species, about, location) => {
-     console.log(id, name, species, about, location)
+  showPetDetails = (id) => {
+     console.log(id)
      let selectedPet = this.state.petList[id-1]
      console.log('old selected pet', selectedPet)
 
@@ -32,10 +32,17 @@ class App extends Component {
 
   }
 
+  removePet = (id) => {
+    let updatedPetList = this.state.petList
+    updatedPetList.splice(id-1, 1)
+
+    this.setState({
+      petList: updatedPetList
+    })
+  }
+
   render() {
     const { currentPet } = this.state;
-    
-
 
     return (
       <main className="App">
@@ -54,7 +61,8 @@ class App extends Component {
           { /* Wave 1:  Where PetList should appear */ }
           <PetList 
           allPets={this.state.petList}
-          onSelectPet={this.showPetDetails} />
+          onSelectPet={this.showPetDetails} 
+          onRemovePet={this.removePet}/>
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }

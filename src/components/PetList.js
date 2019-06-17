@@ -6,9 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const PetList = (props) => {
 
-  const showPetDetails = (id, name, species, about, location) => {
+  const showPetDetails = (id) => {
     console.log('in show pet details function')
-    props.onSelectPet(id, name, species, about, location)
+    props.onSelectPet(id)
+  }
+
+  const removePet = (id) => {
+    props.onRemovePet(id)
   }
 
   const allPets = props.allPets.map((pet, i) => {
@@ -21,7 +25,8 @@ const PetList = (props) => {
         // about={pet.about}
         // location={pet.location} 
         {...pet}
-        petDetailsClickCallback={showPetDetails} />
+        petDetailsClickCallback={showPetDetails} 
+        removePetCallback={removePet}/>
     )
   })
 
@@ -36,6 +41,7 @@ const PetList = (props) => {
 PetList.propTypes = {
   allPets: PropTypes.array.isRequired,
   onSelectPet: PropTypes.func,
+  onRemovePet: PropTypes.func,
 };
 
 export default PetList;

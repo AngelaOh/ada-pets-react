@@ -21,15 +21,10 @@ class App extends Component {
   }
 
   showPetDetails = (index) => {
-     let selectedPet = this.state.petList[index]
-     console.log("selected pet image", selectedPet.images)
-     console.log('old selected pet', selectedPet)
-
+    let selectedPet = this.state.petList[index]
     this.setState({
       currentPet: selectedPet
     })
-    console.log('current pet', this.state.currentPet)
-
   }
 
   removePet = (index) => {

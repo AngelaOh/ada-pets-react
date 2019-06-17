@@ -34,6 +34,14 @@ class NewPetForm extends Component {
       images: [this.state.images],
       about: this.state.about
     })
+
+    this.setState({
+      name: '',
+      species: '',
+      location: '',
+      images: '',
+      about: ''
+    })
   }
 
   render() {
@@ -68,7 +76,7 @@ class NewPetForm extends Component {
               <label htmlFor="images">Image:</label>
               <input 
               name="images"
-              
+              required
               onChange={this.onChangeHandler}
               value={this.state.images} />
             </div>
@@ -79,11 +87,12 @@ class NewPetForm extends Component {
               onChange={this.onChangeHandler}
               value={this.state.about} />
             </div>
-              <input
+              {/* <input
               type="submit"
-              value="Add Pet" />
+              value="Add Pet" /> */}
+              <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" />
           </form>
-        <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" />
+        {/* <input className="btn btn-success new-pet-form--submit" type="submit" name="submit" value="Add a Pet" /> */}
       </form>
     );
   }

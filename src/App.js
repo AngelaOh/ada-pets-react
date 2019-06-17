@@ -20,9 +20,9 @@ class App extends Component {
     };
   }
 
-  showPetDetails = (id) => {
-     console.log(id)
-     let selectedPet = this.state.petList[id-1]
+  showPetDetails = (index) => {
+     console.log(index)
+     let selectedPet = this.state.petList[index]
      console.log('old selected pet', selectedPet)
 
     this.setState({
@@ -32,12 +32,20 @@ class App extends Component {
 
   }
 
-  removePet = (id) => {
+  removePet = (index) => {
     let updatedPetList = this.state.petList
-    updatedPetList.splice(id-1, 1)
+    updatedPetList.splice(index, 1)
 
     this.setState({
       petList: updatedPetList
+    })
+  }
+
+  addNewPet = (pet) => {
+    const pets = this.state.petList
+    pets.push(pet)
+    this.setState({
+      petList: pets
     })
   }
 
@@ -66,6 +74,8 @@ class App extends Component {
         </section>
         <section className="new-pet-form-wrapper">
           { /* Wave 3:  Where NewPetForm should appear */ }
+          <NewPetForm 
+          addPetCallback={this.addNewPet}/>
         </section>
       </main>
     );

@@ -8,14 +8,14 @@ import speciesEmoji from '../speciesEmoji';
 
 
 const PetCard = (props) => {
-  const { id, name, species, about, location } = props;
+  const { index, id, name, species, about, location } = props;
 
   const onPetDetailsClick = () => {
-    props.petDetailsClickCallback(id)
+    props.petDetailsClickCallback(index)
   }
 
   const removePetClick = () => {
-    props.removePetCallback(id)
+    props.removePetCallback(index)
   }
 
   return (
